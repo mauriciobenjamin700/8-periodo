@@ -87,8 +87,8 @@ def print_board(board) -> None:
 
 board = generate_board()
 
-if solve_n_queens(board):
-    #print_board(board)
-    plot_board(board)
+if solve_n_queens(board,0):
+    print_board(board)
+    #plot_board(board)
 else:
     print("Solução não encontrada")

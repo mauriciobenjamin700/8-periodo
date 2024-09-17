@@ -152,13 +152,18 @@ def plot_board(board:list[list]) -> None:
     plt.title('Matriz')
     plt.show()
 
-M = int(input("Digite o número de linhas do tabuleiro: "))
-N = int(input("Digite o número de colunas do tabuleiro: "))
+#M = int(input("Digite o número de linhas do tabuleiro: "))
+#N = int(input("Digite o número de colunas do tabuleiro: "))
+M = gerenate_random_number(1, 10)
+N = gerenate_random_number(1, 10)
 
-num_blocks = int(input("Digite o número de obstáculos: "))
+#num_blocks = int(input("Digite o número de obstáculos: "))
+num_blocks = gerenate_random_number(1, (M*N)//2)
 
-x = int(input("Digite a posição inicial do robô (linha): "))
-y = int(input("Digite a posição inicial do robô (coluna): "))
+#x = int(input("Digite a posição inicial do robô (linha): "))
+#y = int(input("Digite a posição inicial do robô (coluna): "))
+x = gerenate_random_number(0, M - 1)
+y = gerenate_random_number(0, N - 1)
 
 board = generate_board(M,N)
 
@@ -166,8 +171,10 @@ generate_obstacles(board, num_blocks)
 
 
 while not place(board, x, y, 'robot'):
-    x = int(input("Digite a posição inicial do robô (linha): "))
-    y = int(input("Digite a posição inicial do robô (coluna): "))
+    #x = int(input("Digite a posição inicial do robô (linha): "))
+    #y = int(input("Digite a posição inicial do robô (coluna): "))
+    x = gerenate_random_number(0, M - 1)
+    y = gerenate_random_number(0, N - 1)
     
 show_board(board)
 
@@ -179,7 +186,7 @@ while True:
         break
     
     if move(board, x, y, direction):
-        #show_board(board)
-        plot_board(board)
+        show_board(board)
+        #plot_board(board)
     
     
