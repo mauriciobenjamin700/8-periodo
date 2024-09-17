@@ -18,6 +18,21 @@ TRASH = 1
 OBSTACLE = 7
 ROBOT = 8
 
+def gerenate_random_number(min: int, max: int) -> int:
+    """
+    Gerá um número aleatório entre min e max, considerando min e max como valores possíveis
+    
+    - Args:
+        min::int: valor mínimo
+        max::int: valor máximo
+        
+    - Returns:
+        int: número aleatório
+    """
+    
+    return randint(min, max)
+    
+
 def generate_board(m:int, n:int) -> list[list]:
     
     board = [[TRASH for i in range(0,n,1)] for j in range(0,m,1)]
@@ -29,8 +44,8 @@ def generate_position(board:list[list]) -> tuple[int, int]:
         width = len(board)
         height = len(board[0])
         
-        x = randint(0, width - 1)
-        y = randint(0, height - 1)
+        x = gerenate_random_number(0, width - 1)
+        y = gerenate_random_number(0, height - 1)
         
         return x, y
 
@@ -106,7 +121,7 @@ def move(board:list[list], x:int, y:int, direction: Literal["up", "down", "right
     elif direction == "left":
         y -= 1
     else:
-        raise ValueError("Direção inválida")
+        raise print("Direção inválida")
     
     if x < 0 or x >= width or y < 0 or y >= height: # Checando se a posição é válida
         print("\nPosição inválida")
@@ -127,6 +142,15 @@ def show_board(board:list[list]) -> None:
         
     for i in range(0,len(board),1):
         print(board[i])
+        
+def plot_board(board:list[list]) -> None:
+    import matplotlib.pyplot as plt
+    import matplotlib
+    matplotlib.use('TkAgg')
+    plt.imshow(board, cmap='viridis', interpolation='none')
+    plt.colorbar()  # Adiciona a barra de cores ao lado
+    plt.title('Matriz')
+    plt.show()
 
 M = int(input("Digite o número de linhas do tabuleiro: "))
 N = int(input("Digite o número de colunas do tabuleiro: "))
@@ -151,7 +175,11 @@ while True:
     direction = input("Digite a direção do movimento do robô: [up, down, right, left] ou 'exit' para sair: ")
     x,y = get_robot_position(board)
     
+    if direction == "exit":
+        break
+    
     if move(board, x, y, direction):
-        show_board(board)
+        #show_board(board)
+        plot_board(board)
     
     
