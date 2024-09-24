@@ -1,22 +1,13 @@
-"""
-# Desafio
-
-- Crie uma tabuleiro de Tamanho MxN, onde M e N são números inteiros positivos. 
-- O tabuleiro deve ser preenchido com 0 para local vazio, -1 para lixo e 1 para obstaculos. 
-- O robô deve começar na posição (X,Y) e deve se mover somente dentro do tabuleiro. 
-- O robô deve se mover apenas na horizontal e vertical.
-- O robô não ficar em cima de obstaculos.
-- O robô só pode dar "um passo" por vez.
-"""
-
-
 from random import randint
 from typing import Literal
 
-VOID = 0
-TRASH = 1
-OBSTACLE = 7
-ROBOT = 8
+
+from utils import(
+    VOID,
+    TRASH,
+    OBSTACLE,
+    ROBOT
+)
 
 def gerenate_random_number(min: int, max: int) -> int:
     """
@@ -121,7 +112,7 @@ def move(board:list[list], x:int, y:int, direction: Literal["up", "down", "right
     elif direction == "left":
         y -= 1
     else:
-        raise print("Direção inválida")
+        raise ValueError("Direção inválida")
     
     if x < 0 or x >= width or y < 0 or y >= height: # Checando se a posição é válida
         print("\nPosição inválida")
@@ -151,43 +142,3 @@ def plot_board(board:list[list]) -> None:
     plt.colorbar()  # Adiciona a barra de cores ao lado
     plt.title('Matriz')
     plt.show()
-
-#M = int(input("Digite o número de linhas do tabuleiro: "))
-#N = int(input("Digite o número de colunas do tabuleiro: "))
-M = gerenate_random_number(10, 20)
-N = gerenate_random_number(10, 20)
-
-#num_blocks = int(input("Digite o número de obstáculos: "))
-num_blocks = gerenate_random_number(1, (M*N)//2)
-
-#x = int(input("Digite a posição inicial do robô (linha): "))
-#y = int(input("Digite a posição inicial do robô (coluna): "))
-x = gerenate_random_number(0, M - 1)
-y = gerenate_random_number(0, N - 1)
-
-board = generate_board(M,N)
-
-generate_obstacles(board, num_blocks)
-
-
-while not place(board, x, y, 'robot'):
-    #x = int(input("Digite a posição inicial do robô (linha): "))
-    #y = int(input("Digite a posição inicial do robô (coluna): "))
-    x = gerenate_random_number(0, M - 1)
-    y = gerenate_random_number(0, N - 1)
-    
-#how_board(board)
-plot_board(board)
-
-while True:
-    direction = input("Digite a direção do movimento do robô: [up, down, right, left] ou 'exit' para sair: ")
-    x,y = get_robot_position(board)
-    
-    if direction == "exit":
-        break
-    
-    if move(board, x, y, direction):
-        #show_board(board)
-        plot_board(board)
-    
-    
