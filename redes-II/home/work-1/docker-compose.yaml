@@ -3,11 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.sender
+    container_name: sender
     depends_on:
       - receiver
   receiver:
     build:
       context: .
       dockerfile: Dockerfile.receiver
+    container_name: receiver
     ports:
       - "10000:10000/udp"

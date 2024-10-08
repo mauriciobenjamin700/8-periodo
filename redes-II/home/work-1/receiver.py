@@ -1,17 +1,18 @@
 import socket
 import json
-from q4 import calculate_checksum
+from checksum import calculate_checksum
+from constants import NUM_MESSAGES, SERVER_ADDRESS
 
 def main():
-    n = 10  # Número de mensagens a serem recebidas
-    server_address = ('0.0.0.0', 10000)
+    NUM_MESSAGES
+
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(server_address)
+    sock.bind(SERVER_ADDRESS)
     
     errors = 0
     
-    for _ in range(n):
+    for _ in range(NUM_MESSAGES):
         data, _ = sock.recvfrom(4096)
         received = json.loads(data.decode())
         message = received['message']

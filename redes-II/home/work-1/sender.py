@@ -1,22 +1,21 @@
 import socket
 import random
 import json
-from q4 import calculate_checksum
+from checksum import calculate_checksum
+from constants import NUM_MESSAGES,CLIENT_TO_SERVER_ADDRESS, MENSAGE_LENGTH
 
-def generate_message(length=16):
-    return [random.randint(0, 1) for _ in range(length)]
+def generate_message():
+    return [random.randint(0, 1) for _ in range(MENSAGE_LENGTH)]
 
 def main():
-    n = 10  # Número de mensagens a serem enviadas
-    server_address = ('receiver', 10000)
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
-    for _ in range(n):
+    for _ in range(NUM_MESSAGES):
         message = generate_message()
         checksum = calculate_checksum(message)
         data = json.dumps({'message': message, 'checksum': checksum})
-        sock.sendto(data.encode(), server_address)
+        sock.sendto(data.encode(), CLIENT_TO_SERVER_ADDRESS)
     
     sock.close()
 

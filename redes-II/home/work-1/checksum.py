@@ -1,9 +1,12 @@
 from random import randint
+
+
+from constants import MENSAGE_LENGTH
 def generate_bits() -> list[int]:
     """
-    Gera uma sequência de n bits com tamanho 16.
+    Gera uma sequência aleatória de bits com tamanho 16.
     """
-    return [randint(0, 1) for _ in range(16)]
+    return [randint(0, 1) for _ in range(MENSAGE_LENGTH)]
 
 def calculate_checksum(bits: list[int]) -> int:    
     """
