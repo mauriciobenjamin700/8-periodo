@@ -25,7 +25,7 @@ def main():
     sock.close()
     
     if errors == 0:
-        print("Nenhum erro detectado nas mensagens enviadas.")
+        print(f"Nenhum erro detectado nas {NUM_MESSAGES} mensagens enviadas.")
     else:
         print(f"Erro detectado em {errors} mensagens.")
 

@@ -1,0 +1,48 @@
+services:
+  sender:
+    build:
+      context: .
+      dockerfile: Dockerfile.sender
+    container_name: sender2
+    depends_on:
+      - node1
+
+  node1:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node1
+    depends_on:
+      - node2
+
+  node2:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node2
+    depends_on:
+      - node3
+
+  node3:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node3
+    depends_on:
+      - node4
+
+  node4:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node4
+    depends_on:
+      - receiver
+
+  receiver:
+    build:
+      context: .
+      dockerfile: Dockerfile.receiver
+    container_name: receiver2
+    ports:
+      - "10000:10000/udp"
