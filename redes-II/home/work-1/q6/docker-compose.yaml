@@ -1,11 +1,17 @@
+networks:
+  default:
+    driver: bridge
+    
 services:
-  sender:
+  sender2:
     build:
       context: .
       dockerfile: Dockerfile.sender
     container_name: sender2
     depends_on:
       - node1
+    networks:
+      - default
 
   node1:
     build:
@@ -14,6 +20,8 @@ services:
     container_name: node1
     depends_on:
       - node2
+    networks:
+      - default
 
   node2:
     build:
@@ -22,7 +30,8 @@ services:
     container_name: node2
     depends_on:
       - node3
-
+    networks:
+      - default
   node3:
     build:
       context: .
@@ -30,19 +39,24 @@ services:
     container_name: node3
     depends_on:
       - node4
-
+    networks: 
+      - default
   node4:
     build:
       context: .
       dockerfile: Dockerfile.node
     container_name: node4
     depends_on:
-      - receiver
+      - receiver2
+    networks:
+      - default
 
-  receiver:
+  receiver2:
     build:
       context: .
       dockerfile: Dockerfile.receiver
     container_name: receiver2
     ports:
       - "10000:10000/udp"
+    networks:
+      - default 

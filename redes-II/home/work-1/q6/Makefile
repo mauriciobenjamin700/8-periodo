@@ -1,9 +1,7 @@
 start:
 	@echo "Starting the project"
-	@docker compose up -d --build --remove-orphans
-	@echo "Following logs of the receiver container"
-	@sleep 5
-	@docker logs receiver2
+	@docker compose up --build --remove-orphans
+
 
 stop-all:
 	@echo "Stopping all containers"
