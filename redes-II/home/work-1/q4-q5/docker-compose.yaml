@@ -1,4 +1,5 @@
 services:
+
   sender:
     build:
       context: .
@@ -6,6 +7,7 @@ services:
     container_name: sender
     depends_on:
       - receiver
+      
   receiver:
     build:
       context: .

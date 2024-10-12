@@ -2,6 +2,8 @@ from random import randint
 
 
 from constants import MENSAGE_LENGTH
+
+
 def generate_bits() -> list[int]:
     """
     Gera uma sequência aleatória de bits com tamanho 16.
@@ -16,7 +18,7 @@ def calculate_checksum(bits: list[int]) -> int:
 
     O checksum é inicializado com o valor 0.
 
-    O checksum é inicializado com zero porque o valor inicial de um checksum deve ser neutro para a operação que será aplicada. No caso da operação XOR, o valor neutro é zero. Isso ocorre porque:
+    O checksum é inicializado com zero porque o valor inicial de um checksum deve ser neutro para a operação que será aplicada. No caso da operação XOR, o valor neutro é zero:
 
     Iteração sobre os Bits:
 
@@ -35,8 +37,6 @@ def calculate_checksum(bits: list[int]) -> int:
     Iteração 3: checksum = 1 XOR 1 = 0
     Iteração 4: checksum = 0 XOR 1 = 1
     O checksum final é 1.
-
-z   
     """
     checksum = 0
     for bit in bits:
