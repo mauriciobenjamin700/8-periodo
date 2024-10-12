@@ -23,7 +23,7 @@ services:
       - test-network
 
   router-2:
-    image: router-1
+    image: router-2
     build:
       context: .
       dockerfile: Dockerfile.router
