@@ -32,7 +32,12 @@ def main() -> None:
         time.sleep(1)  # Envia uma mensagem por segundo
     
     # Enviar mensagem de encerramento
-    sock.sendto({'message': "The End".encode(), 'user': USERS[0]}, get_next_step(USERS[0]))
+
+    message = "The End"
+
+    data = encode_message(message, USERS[0])
+
+    sock.sendto(data, get_next_step(USERS[0]))
     sock.close()
 
 if __name__ == "__main__":

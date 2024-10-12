@@ -27,44 +27,42 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.router
-    container_name: router-1
+    container_name: router-2
     ports:
-      - "10001:10000"
+      - "10002:10000"
     networks:
       - test-network
 
   router-3:
-    image: router-1
+    image: router-3
     build:
       context: .
       dockerfile: Dockerfile.router
-    container_name: router-1
+    container_name: router-3
     ports:
-      - "10001:10000"
+      - "10003:10000"
     networks:
       - test-network
 
   router-4:
-    image: router-1
+    image: router-4
     build:
       context: .
       dockerfile: Dockerfile.router
-    container_name: router-1
+    container_name: router-4
     ports:
-      - "10001:10000"
+      - "10004:10000"
     networks:
       - test-network
 
-
-
   receiver-q6:
-    image: router-1
+    image: receiver-q6
     build:
       context: .
-      dockerfile: Dockerfile.router
-    container_name: router-1
+      dockerfile: Dockerfile.receiver
+    container_name: receiver-q6
     ports:
-      - "10001:10000"
+      - "10005:10000"
     networks:
       - test-network
 
