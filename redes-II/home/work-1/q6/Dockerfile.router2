@@ -3,4 +3,5 @@ WORKDIR /app
 COPY router2.py .
 COPY constants.py .
 COPY utils.py .
+COPY router.py .
 CMD ["python", "router2.py"]

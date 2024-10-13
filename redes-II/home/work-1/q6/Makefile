@@ -8,9 +8,10 @@ stop:
 	@docker stop $(shell docker ps -q)
 
 clean:
-	@echo "Removing all containers and images"
+	@echo "Removing all containers, images, and volumes"
 	@docker rm -f $(shell docker ps -aq)
 	@docker rmi -f $(shell docker images -q)
+	@docker volume rm $(shell docker volume ls -q)
 
 logs:
 	@echo "Showing logs"

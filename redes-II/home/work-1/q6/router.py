@@ -1,14 +1,17 @@
 import socket
 
 
-from constants import ADDRESSES, RECEIVER, ROUTER3, ROUTER4, SENDER
+from constants import RECEIVER, SENDER
 from utils import decode_message
 
-def Router(address: tuple, next_router: tuple, previous_router: tuple):
-    
+def Router(address: tuple, next_node: tuple, previous_node: tuple):
+    """
+    Cria um objeto socket e fica escutando mensagens vindas de um endereço específico e as direcionando para outro endereço.
+    """
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    sock.bind(ADDRESSES[ROUTER4])
+    sock.bind(address)
+    #sock.bind(ADDRESSES[ROUTER4])
 
     while True:
         data, _ = sock.recvfrom(4096)
@@ -21,16 +24,13 @@ def Router(address: tuple, next_router: tuple, previous_router: tuple):
     
         if decode_data["owner"] == SENDER:
 
-            sock.sendto(data, ADDRESSES[RECEIVER])
+            sock.sendto(data, next_node)
 
         elif decode_data["owner"] == RECEIVER:
 
-            sock.sendto(data, ADDRESSES[ROUTER3])
+            sock.sendto(data, previous_node)
     
             break # SE O SERVIDOR MANDOU, PODE ENCERRAR
 
 
     sock.close()
-
-if __name__ == "__main__":
-    main()

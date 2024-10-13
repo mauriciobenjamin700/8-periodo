@@ -12,6 +12,8 @@ services:
       - test-network
     depends_on:
       - router-1
+    volumes:
+      - ./metrics:/app/metrics
 
   router-1:
     image: router-1

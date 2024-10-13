@@ -1,0 +1,601 @@
+--------------------------------------------------
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-
+Métricas obtidas em 1min:
+Enviadas: 61
+Recebidas: 61
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 61.0
+Média de mensagens recebidas por segundo: 1.0
+Taxa de recebimento máxima: 1.00
+Taxa de recebimento mínima: 1.00
+Taxa de recebimento média: 1.00
+Desvio padrão da taxa de recebimento: 0.00
+-

@@ -1,5 +1,5 @@
 MENSAGE_LENGTH = 16
-TIME_TO_SEND = 1  # tempo em minutos para enviar as mensagens, onde o ideal seria 5 minutos
+TIME_TO_SEND = 5  # tempo em minutos para enviar as mensagens, onde o ideal seria 5 minutos
 
 
 SENDER = 'sender-q6'
@@ -11,12 +11,12 @@ RECEIVER = 'receiver-q6'
 
 ADDRESSES = {
     
-    SENDER:    ('sender-q6', 10000),  
-    ROUTER1:   ('router-1', 10001),
-    ROUTER2:   ('router-2', 10002),
-    ROUTER3:   ('router-3', 10003),
-    ROUTER4:   ('router-4', 10004),
-    RECEIVER:  ('receiver-q6', 10005)
+    SENDER:    (SENDER, 10000),  
+    ROUTER1:   (ROUTER1, 10001),
+    ROUTER2:   (ROUTER2, 10002),
+    ROUTER3:   (ROUTER3, 10003),
+    ROUTER4:   (ROUTER4, 10004),
+    RECEIVER:  (RECEIVER, 10005)
 }
 
 STEPS = {
