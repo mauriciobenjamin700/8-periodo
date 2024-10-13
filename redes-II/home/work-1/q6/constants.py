@@ -10,13 +10,13 @@ ROUTER4 = 'router-4'
 RECEIVER = 'receiver-q6'
 
 ADDRESSES = {
-
-    SENDER:    ('0.0.0.0', 10000),  
-    ROUTER1:   ('0.0.0.0', 10001),
-    ROUTER2:   ('0.0.0.0', 10002),
-    ROUTER3:   ('0.0.0.0', 10003),
-    ROUTER4:   ('0.0.0.0', 10004),
-    RECEIVER:  ('0.0.0.0', 10005)
+    
+    SENDER:    ('sender-q6', 10000),  
+    ROUTER1:   ('router-1', 10001),
+    ROUTER2:   ('router-2', 10002),
+    ROUTER3:   ('router-3', 10003),
+    ROUTER4:   ('router-4', 10004),
+    RECEIVER:  ('receiver-q6', 10005)
 }
 
 # STEPS = {

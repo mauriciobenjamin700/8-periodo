@@ -18,15 +18,15 @@ def main():
 
         decoded_message = decode_message(data)
 
+        message = decoded_message['message']
+        
+        print(f"Recebido: {message}")
+
         if decoded_message["message"] == "The End":
 
             print("Recebido: The End")
 
             break
-
-        message = decoded_message['message']
-        
-        print(f"Recebido: {message}")
     
     sock.close()
 

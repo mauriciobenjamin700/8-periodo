@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile.router1
     container_name: router-1
     ports:
-      - "10001:10000/udp"
+      - "10001:10001/udp"
     networks:
       - test-network
     depends_on:
@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile.router2
     container_name: router-2
     ports:
-      - "10002:10000/udp"
+      - "10002:10002/udp"
     networks:
       - test-network
     depends_on:
@@ -46,7 +46,7 @@ services:
       dockerfile: Dockerfile.router3
     container_name: router-3
     ports:
-      - "10003:10000/udp"
+      - "10003:10003/udp"
     networks:
       - test-network
     depends_on:
@@ -59,7 +59,7 @@ services:
       dockerfile: Dockerfile.router4
     container_name: router-4
     ports:
-      - "10004:10000/udp"
+      - "10004:10004/udp"
     networks:
       - test-network
     depends_on:
@@ -72,7 +72,7 @@ services:
       dockerfile: Dockerfile.receiver
     container_name: receiver-q6
     ports:
-      - "10005:10000/udp"
+      - "10005:10005/udp"
     networks:
       - test-network
 
