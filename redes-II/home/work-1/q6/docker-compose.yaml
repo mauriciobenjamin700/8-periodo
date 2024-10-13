@@ -7,53 +7,63 @@ services:
       dockerfile: Dockerfile.sender
     container_name: sender-q6
     ports:
-      - "11000:10000"
+      - "10000:10000/udp"
     networks:
       - test-network
+    depends_on:
+      - router-1
 
   router-1:
     image: router-1
     build:
       context: .
-      dockerfile: Dockerfile.router
+      dockerfile: Dockerfile.router1
     container_name: router-1
     ports:
-      - "10001:10000"
+      - "10001:10000/udp"
     networks:
       - test-network
+    depends_on:
+      - router-2
 
   router-2:
     image: router-2
     build:
       context: .
-      dockerfile: Dockerfile.router
+      dockerfile: Dockerfile.router2
     container_name: router-2
     ports:
-      - "10002:10000"
+      - "10002:10000/udp"
     networks:
       - test-network
+    depends_on:
+      - router-3
 
   router-3:
     image: router-3
     build:
       context: .
-      dockerfile: Dockerfile.router
+      dockerfile: Dockerfile.router3
     container_name: router-3
     ports:
-      - "10003:10000"
+      - "10003:10000/udp"
     networks:
       - test-network
+    depends_on:
+      - router-4
 
   router-4:
     image: router-4
     build:
       context: .
-      dockerfile: Dockerfile.router
+      dockerfile: Dockerfile.router4
     container_name: router-4
     ports:
-      - "10004:10000"
+      - "10004:10000/udp"
     networks:
       - test-network
+    depends_on:
+      - receiver-q6
 
   receiver-q6:
     image: receiver-q6
@@ -62,13 +72,10 @@ services:
       dockerfile: Dockerfile.receiver
     container_name: receiver-q6
     ports:
-      - "10005:10000"
+      - "10005:10000/udp"
     networks:
       - test-network
 
 networks:
   test-network:
     driver: bridge
-
-volumes:
-  db_volume:

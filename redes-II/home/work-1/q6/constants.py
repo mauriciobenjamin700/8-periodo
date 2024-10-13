@@ -1,15 +1,23 @@
 MENSAGE_LENGTH = 16
 TIME_TO_SEND = 1  # tempo em minutos para enviar as mensagens, onde o ideal seria 5 minutos
-START_NODE_ADDRESS = ('router-1', 10000)
-SERVER_ADDRESS = ('0.0.0.0', 10005)
-USERS = [
-    "sender-q6",
-    "router-1",
-    "router-2",
-    "router-3",
-    "router-4",
-    "receiver-q6"
-]
+
+
+SENDER = 'sender-q6'
+ROUTER1 = 'router-1'
+ROUTER2 = 'router-2'
+ROUTER3 = 'router-3'
+ROUTER4 = 'router-4'
+RECEIVER = 'receiver-q6'
+
+ADDRESSES = {
+
+    SENDER:    ('0.0.0.0', 10000),  
+    ROUTER1:   ('0.0.0.0', 10001),
+    ROUTER2:   ('0.0.0.0', 10002),
+    ROUTER3:   ('0.0.0.0', 10003),
+    ROUTER4:   ('0.0.0.0', 10004),
+    RECEIVER:  ('0.0.0.0', 10005)
+}
 
 # STEPS = {
 #     'sender-q6': ('router-1', 10001),  # Endereço do próximo nó e porta do próximo nó
@@ -20,9 +28,9 @@ USERS = [
 # }
 
 STEPS = {
-    'sender-q6': ('0.0.0.0', 10001),  # Endereço do próximo nó e porta do próximo nó
-    'router-1':  ('0.0.0.0', 10002),
-    'router-2':  ('0.0.0.0', 10003),
-    'router-3':  ('0.0.0.0', 10004),
-    'router-4':  ('0.0.0.0', 10005)
+    SENDER: ADDRESSES[ROUTER1],  
+    ROUTER1:  ADDRESSES[ROUTER2],
+    ROUTER2:  ADDRESSES[ROUTER3],
+    ROUTER3:  ADDRESSES[ROUTER4],
+    ROUTER4:  ADDRESSES[RECEIVER]
 }

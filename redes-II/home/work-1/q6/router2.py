@@ -1,21 +1,25 @@
 import socket
 
 
-from constants import SERVER_ADDRESS
+from constants import ROUTER2
 from utils import decode_message, get_next_step
 
 def main():
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(SERVER_ADDRESS)
+
+    sock.bind(get_next_step(ROUTER2))
 
     while True:
         data, _ = sock.recvfrom(4096)
         decode_data = decode_message(data)
+
+        print(f"Recebi {decode_data['message']} de {decode_data['owner']}")
+
         if decode_data['message'] == "The End":
             break
 
-        sock.sendto(data, get_next_step(decode_data['owner']))
+        sock.sendto(data, get_next_step(ROUTER2))
     
     sock.close()
 
