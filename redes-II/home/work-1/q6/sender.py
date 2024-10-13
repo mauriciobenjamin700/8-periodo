@@ -30,7 +30,6 @@ def metrics(sended_messages: int, received_messages: int, timestamps: list[float
     std_dev_rate = statistics.stdev(rates) if len(rates) > 1 else 0
 
     metrics_output = (
-        "-"*50 + "\n"
         f"Métricas obtidas em {TIME_TO_SEND}min:\n"
         f"Enviadas: {sended_messages}\n"
         f"Recebidas: {received_messages}\n"
@@ -42,7 +41,6 @@ def metrics(sended_messages: int, received_messages: int, timestamps: list[float
         f"Taxa de recebimento mínima: {min_rate:.2f}\n"
         f"Taxa de recebimento média: {avg_rate:.2f}\n"
         f"Desvio padrão da taxa de recebimento: {std_dev_rate:.2f}\n"
-        "-"*50 + "\n"
     )
 
     return metrics_output
@@ -81,7 +79,7 @@ def main() -> None:
         timestamps.append(time.time())
         
         #time.sleep(1)  # Envia uma mensagem por segundo (Garante e entrega das msgs)
-        #time.sleep(0.1)  # (Garante e entrega de mais msgs)
+        #time.sleep(0.01)  # (Garante e entrega de mais msgs)
     # Enviar mensagem de encerramento
 
     message = TURN_OFF_SERVER

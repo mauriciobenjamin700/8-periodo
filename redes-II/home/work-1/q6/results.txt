@@ -1,0 +1,49 @@
+Métricas obtidas em 5min: delay: None
+Enviadas: 727445
+Recebidas: 727444
+Perdidas: 1
+Porcentagem de perda: 0.0001374674374007657%
+Média de mensagens enviadas por minuto: 145489.0
+Média de mensagens recebidas por segundo: 2425.0
+Taxa de recebimento máxima: 4219.62
+Taxa de recebimento mínima: 3.44
+Taxa de recebimento média: 2567.27
+Desvio padrão da taxa de recebimento: 394.63
+
+Métricas obtidas em 5min: delay: 0.1
+Enviadas: 2951
+Recebidas: 2951
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 590.0
+Média de mensagens recebidas por segundo: 10.0
+Taxa de recebimento máxima: 9.93
+Taxa de recebimento mínima: 7.50
+Taxa de recebimento média: 9.83
+Desvio padrão da taxa de recebimento: 0.07
+
+Métricas obtidas em 5min: 0.01
+Enviadas: 26733
+Recebidas: 26733
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 5347.0
+Média de mensagens recebidas por segundo: 89.0
+Taxa de recebimento máxima: 95.97
+Taxa de recebimento mínima: 16.05
+Taxa de recebimento média: 89.25
+Desvio padrão da taxa de recebimento: 3.01
+
+
+
+Métricas obtidas em 5min: delay: None
+Enviadas: 668528
+Recebidas: 668528
+Perdidas: 0
+Porcentagem de perda: 0.0%
+Média de mensagens enviadas por minuto: 133706.0
+Média de mensagens recebidas por segundo: 2228.0
+Taxa de recebimento máxima: 4108.04
+Taxa de recebimento mínima: 3.60
+Taxa de recebimento média: 2423.00
+Desvio padrão da taxa de recebimento: 476.09
