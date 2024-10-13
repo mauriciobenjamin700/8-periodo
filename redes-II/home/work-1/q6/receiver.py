@@ -2,8 +2,8 @@ import socket
 import json
 
 
-from constants import ADDRESSES, RECEIVER
-from utils import decode_message
+from constants import ADDRESSES, RECEIVER, ROUTER4, TURN_OFF_SERVER
+from utils import decode_message, encode_message
 
 def main():
 
@@ -27,11 +27,15 @@ def main():
 
         num_messages += 1
 
-        if message == "The End":
+        if message == TURN_OFF_SERVER:
 
             print("Servidor Encerrando...")
 
             break
+
+    to_sender = encode_message(str(num_messages), RECEIVER)
+
+    sock.sendto(to_sender, ADDRESSES[ROUTER4])
     
     sock.close()
 

@@ -16,10 +16,6 @@ logs:
 	@echo "Showing logs"
 	@docker compose logs
 
-run-sender:
-	@echo "Running sender.py in a new container"
-	@docker run --rm --name sender-q6 -v "$(pwd)":/app -w /app python:3.9-slim python sender.py
-
 result-client:
 	@docker logs sender-q6
 

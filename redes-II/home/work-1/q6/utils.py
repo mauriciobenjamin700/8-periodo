@@ -1,7 +1,7 @@
 from json import dumps, loads
 
 
-def encode_message(message: list[int], owner: str) -> bytes:
+def encode_message(message: list, owner: str) -> bytes:
     datagram = {'message': message, 'owner': owner}
     return dumps(datagram).encode()
 

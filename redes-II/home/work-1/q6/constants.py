@@ -19,14 +19,6 @@ ADDRESSES = {
     RECEIVER:  ('receiver-q6', 10005)
 }
 
-# STEPS = {
-#     'sender-q6': ('router-1', 10001),  # Endereço do próximo nó e porta do próximo nó
-#     'router-1':  ('router-2', 10002),
-#     'router-2':  ('router-3', 10003),
-#     'router-3':  ('router-4', 10004),
-#     'router-4':  ('receiver-q6', 10005)
-# }
-
 STEPS = {
     SENDER: ADDRESSES[ROUTER1],  
     ROUTER1:  ADDRESSES[ROUTER2],
@@ -34,3 +26,6 @@ STEPS = {
     ROUTER3:  ADDRESSES[ROUTER4],
     ROUTER4:  ADDRESSES[RECEIVER]
 }
+
+TURN_OFF_SERVER = "The End"
+TURN_OFF_ROUTERS = "turnoff"

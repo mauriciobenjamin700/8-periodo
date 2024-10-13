@@ -7,11 +7,13 @@ from datetime import datetime, timedelta
 from constants import (
     ADDRESSES,
     MENSAGE_LENGTH,
+    RECEIVER,
     ROUTER1,
     SENDER, 
-    TIME_TO_SEND
+    TIME_TO_SEND,
+    TURN_OFF_SERVER
 )
-from utils import encode_message
+from utils import decode_message, encode_message
 
 
 def generate_message() -> list[int]:
@@ -20,6 +22,8 @@ def generate_message() -> list[int]:
 def main() -> None:
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    sock.bind(ADDRESSES[SENDER])
 
     end_time = datetime.now() + timedelta(minutes=TIME_TO_SEND)
 
@@ -40,18 +44,32 @@ def main() -> None:
     
     # Enviar mensagem de encerramento
 
-    message = "The End"
+    message = TURN_OFF_SERVER
 
     data = encode_message(message, SENDER)
 
     #print(f"Enviando: {message} para {ROUTER1} no endereço {ADDRESSES[ROUTER1]}")
 
     sock.sendto(data, ADDRESSES[ROUTER1])
+
+    #while True:
+    data, _ = sock.recvfrom(4096)
+    decode_data = decode_message(data)
+
+    num_messages_server = decode_data["message"]
+    #owner = decode_data["owner"]
+
+    #    if owner == RECEIVER:
+            
+    #        break
+
     sock.close()
+    
 
     num_messages += 1
 
     print(f"Enviei {num_messages} mensagens")
+    print(f"Servidor recebeu {num_messages_server} mensagens")
 
 if __name__ == "__main__":
     main()

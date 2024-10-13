@@ -1,7 +1,7 @@
 import socket
 
 
-from constants import ADDRESSES, RECEIVER, ROUTER4
+from constants import ADDRESSES, RECEIVER, ROUTER3, ROUTER4, SENDER, TURN_OFF_ROUTERS
 from utils import decode_message
 
 def main():
@@ -20,8 +20,16 @@ def main():
 
         sock.sendto(data, ADDRESSES[RECEIVER])    
 
-        if decode_data['message'] == "The End":
-            break
+        if decode_data["owner"] == SENDER:
+
+            sock.sendto(data, ADDRESSES[RECEIVER])
+
+        elif decode_data["owner"] == RECEIVER:
+
+            sock.sendto(data, ADDRESSES[ROUTER3])
+    
+            break # SE O SERVIDOR MANDOU, PODE ENCERRAR
+
 
     sock.close()
 

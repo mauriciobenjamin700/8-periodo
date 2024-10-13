@@ -1,7 +1,7 @@
 import socket
 
 
-from constants import ADDRESSES, ROUTER3, ROUTER4
+from constants import ADDRESSES, RECEIVER, ROUTER2, ROUTER3, ROUTER4, SENDER, TURN_OFF_ROUTERS
 from utils import decode_message
 
 def main():
@@ -19,9 +19,14 @@ def main():
         
         #print(f"Repassando mensagem para {ROUTER4} no endereço {ADDRESSES[ROUTER4]}")
 
-        sock.sendto(data, ADDRESSES[ROUTER4])
+        if decode_data["owner"] == SENDER:
 
-        if decode_data['message'] == "The End":
+            sock.sendto(data, ADDRESSES[ROUTER4])
+
+        elif decode_data["owner"] == RECEIVER:
+
+            sock.sendto(data, ADDRESSES[ROUTER2])
+        
             break
     
     sock.close()
