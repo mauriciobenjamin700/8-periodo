@@ -4,7 +4,7 @@ import socket
 from constants import ADDRESSES, RECEIVER, ROUTER3, ROUTER4, SENDER
 from utils import decode_message
 
-def main():
+def Router(address: tuple, next_router: tuple, previous_router: tuple):
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 

@@ -2,7 +2,7 @@ import socket
 import json
 
 
-from constants import ADDRESSES, RECEIVER, ROUTER4, TURN_OFF_SERVER
+from constants import ADDRESSES, RECEIVER, ROUTER4, SENDER, TURN_OFF_SERVER
 from utils import decode_message, encode_message
 
 def main():
@@ -17,15 +17,15 @@ def main():
 
     while True:
         data, _ = sock.recvfrom(4096)
+        
+        num_messages += 1
 
         decoded_message = decode_message(data)
 
         message = decoded_message['message']
-        #owner = deacoded_message['owner']
+        owner = decoded_message['owner']
         
-        #print(f"Recebido: {message} de {owner}")
-
-        num_messages += 1
+        print(f"N {num_messages} Recebido: {message} de {owner}")
 
         if message == TURN_OFF_SERVER:
 
@@ -33,7 +33,7 @@ def main():
 
             break
 
-    to_sender = encode_message(str(num_messages), RECEIVER)
+    to_sender = encode_message(num_messages, RECEIVER)
 
     sock.sendto(to_sender, ADDRESSES[ROUTER4])
     

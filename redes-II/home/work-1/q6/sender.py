@@ -45,31 +45,21 @@ def main() -> None:
     # Enviar mensagem de encerramento
 
     message = TURN_OFF_SERVER
-
     data = encode_message(message, SENDER)
-
     #print(f"Enviando: {message} para {ROUTER1} no endereço {ADDRESSES[ROUTER1]}")
-
     sock.sendto(data, ADDRESSES[ROUTER1])
-
-    #while True:
+    num_messages += 1
+    
+    # Recebendo o retorno do servidor
     data, _ = sock.recvfrom(4096)
     decode_data = decode_message(data)
-
     num_messages_server = decode_data["message"]
-    #owner = decode_data["owner"]
-
-    #    if owner == RECEIVER:
-            
-    #        break
-
+    server_name = decode_data["owner"]
     sock.close()
-    
 
-    num_messages += 1
 
     print(f"Enviei {num_messages} mensagens")
-    print(f"Servidor recebeu {num_messages_server} mensagens")
+    print(f"Servidor {server_name} recebeu {num_messages_server} mensagens")
 
 if __name__ == "__main__":
     main()
