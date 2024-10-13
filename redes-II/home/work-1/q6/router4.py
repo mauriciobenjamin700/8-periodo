@@ -14,17 +14,15 @@ def main():
         data, _ = sock.recvfrom(4096)
         decode_data = decode_message(data)
 
-        print(f"Recebi {decode_data['message']} de {decode_data['owner']}")
+        #print(f"Recebi {decode_data['message']} de {decode_data['owner']}")
 
-
-
-        print(f"Repassando mensagem para {ROUTER4} no endereço {ADDRESSES[ROUTER4]}")
+        #print(f"Repassando mensagem para {ROUTER4} no endereço {ADDRESSES[ROUTER4]}")
 
         sock.sendto(data, ADDRESSES[RECEIVER])    
 
         if decode_data['message'] == "The End":
             break
-        
+
     sock.close()
 
 if __name__ == "__main__":

@@ -14,9 +14,9 @@ def main():
         data, _ = sock.recvfrom(4096)
         decode_data = decode_message(data)
 
-        print(f"Recebi {decode_data['message']} de {decode_data['owner']}")
+        #print(f"Recebi {decode_data['message']} de {decode_data['owner']}")
         
-        print(f"Repassando mensagem para {ROUTER2} no endereço {ADDRESSES[ROUTER2]}")
+        #print(f"Repassando mensagem para {ROUTER2} no endereço {ADDRESSES[ROUTER2]}")
         sock.sendto(data, ADDRESSES[ROUTER2])
 
         if decode_data['message'] == "The End":

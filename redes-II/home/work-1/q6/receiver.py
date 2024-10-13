@@ -13,22 +13,29 @@ def main():
 
     print("Aguardando mensagens...")
 
+    num_messages = 0
+
     while True:
         data, _ = sock.recvfrom(4096)
 
         decoded_message = decode_message(data)
 
         message = decoded_message['message']
+        #owner = deacoded_message['owner']
         
-        print(f"Recebido: {message}")
+        #print(f"Recebido: {message} de {owner}")
 
-        if decoded_message["message"] == "The End":
+        num_messages += 1
 
-            print("Recebido: The End")
+        if message == "The End":
+
+            print("Servidor Encerrando...")
 
             break
     
     sock.close()
+
+    print(f"Recebi {num_messages} mensagens")
 
 if __name__ == "__main__":
     main()
