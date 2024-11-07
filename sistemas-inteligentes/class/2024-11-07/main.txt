@@ -1,0 +1,6 @@
+- Escolher um dataset de classify
+- Implementar KNN na mão
+- Treinar a Base
+- Avaliar a acuracia (Manual)
+- Testar o valor de K várias vezes (umas 10 provavelmente)
+- Fazer tabela de gráfico de pontos
