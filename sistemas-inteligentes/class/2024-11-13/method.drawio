@@ -1,0 +1,62 @@
+<mxfile host="65bd71144e">
+    <diagram id="BIt-9_LmydRsIk6NLtG8" name="Page-1">
+        <mxGraphModel dx="1293" dy="536" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="240" width="560" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" parent="1" source="3" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Aquisição da base de dados" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" parent="1" source="4" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Definição dos modelos a serem testados" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" parent="1" source="5" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Pesquisa e escolha de métricas de avaliação" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" parent="1" source="6" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Treinamento dos modelos" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#000000;" parent="1" source="7" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Avaliação dos resultados" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Escrita do artigo" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#FFFFFF;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;span style=&quot;&quot;&gt;Sim&lt;/span&gt;" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;verticalAlign=middle;fontStyle=0;labelBackgroundColor=#FFFFFF;" parent="1" source="14" target="8" edge="1">
+                    <mxGeometry x="-0.0909" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Não" style="edgeStyle=none;html=1;strokeColor=#000000;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="14" target="6" edge="1">
+                    <mxGeometry x="0.0133" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="460" y="430"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Resultados &lt;br&gt;aceitaveis?" style="html=1;whiteSpace=wrap;aspect=fixed;shape=isoRectangle;strokeWidth=2;fontColor=#000000;fillColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="275" y="385" width="150" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
