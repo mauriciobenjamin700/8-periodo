@@ -1,0 +1,6 @@
+GLRN
+
+-1 = saudavel
+1 = doente
+
+foco kappas
