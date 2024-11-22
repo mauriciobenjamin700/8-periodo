@@ -3,4 +3,7 @@ GLRN
 -1 = saudavel
 1 = doente
 
+mapear para 0 saudavel
+1 doente
+
 foco kappas
