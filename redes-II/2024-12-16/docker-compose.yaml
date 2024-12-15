@@ -1,0 +1,43 @@
+services:
+
+
+  postfix:
+    build:
+      context: ./postfix
+      dockerfile: Dockerfile
+    container_name: postfix
+    ports:
+      - "1026:25"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "25"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - email_network
+
+
+  sender:
+    build:
+      context: ./sender
+      dockerfile: Dockerfile
+    container_name: sender
+    depends_on:
+      - postfix
+    networks:
+      - email_network
+  
+  receiver:
+    build:
+      context: ./receiver
+      dockerfile: Dockerfile
+    container_name: receiver
+    depends_on:
+      - postfix
+    networks:
+      - email_network
+
+
+networks:
+  email_network:
+    driver: bridge

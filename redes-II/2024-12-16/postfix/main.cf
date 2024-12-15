@@ -1,0 +1,4 @@
+myhostname = postfix.mail.local
+mydestination = localhost
+relayhost =
+transport_maps = hash:/etc/postfix/transport
