@@ -1,1 +1,4 @@
 https://www.kaspersky.com.br/resource-center/definitions/firewall#:~:text=Um%20firewall%20%C3%A9%20um%20sistema,permitindo%20pacotes%20de%20dados%20seletivamente.
+https://www.net7.be/blog/article/docker_iptables.html
+https://docs.docker.com/engine/network/packet-filtering-firewalls/
+https://www.youtube.com/watch?v=bpWytcz4uMw

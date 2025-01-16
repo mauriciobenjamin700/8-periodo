@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+
+# Instalar ferramentas necessárias
+RUN apt-get update && apt-get upgrade -y
+
+# Manter o container ativo
+CMD ["sh", "-c", "sleep infinity"]

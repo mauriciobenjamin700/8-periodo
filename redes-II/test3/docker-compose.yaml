@@ -18,15 +18,26 @@ services:
     build:
       context: ./firewall
     container_name: firewall
+    cap_add:
+      - NET_ADMIN  # Permissões para manipular as configurações de rede
+    sysctls:
+      net.ipv4.ip_forward: "1"  # Habilitar roteamento de pacotes
     networks:
       subnet-A:
-        ipv4_address: 10.0.0.1
+        ipv4_address: 10.0.0.5
       subnet-B:
-        ipv4_address: 20.0.0.1
-    cap_add:
-      - NET_ADMIN
-    sysctls:
-      net.ipv4.ip_forward: "1"  # Ativa o encaminhamento de pacotes
+        ipv4_address: 20.0.0.5
+
+  # router:
+  #   image: ubuntu:latest
+  #   container_name: router
+  #   networks:
+  #     subnet-B:
+  #       ipv4_address: 20.0.0.5
+  #     subnet-A:
+  #       ipv4_address: 10.0.0.5
+  #   command: bash -c "apt-get update && apt-get install -y iproute2 && bash"
+
 
   # Rede A
   host1-net-a:
