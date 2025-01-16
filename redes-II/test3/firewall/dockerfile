@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get install -y iproute2 iptables && \
+    apt-get clean
+
+CMD ["sh", "-c", "tail -f /dev/null"]

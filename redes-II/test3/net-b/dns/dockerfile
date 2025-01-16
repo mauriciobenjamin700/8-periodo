@@ -1,0 +1,7 @@
+FROM ubuntu/bind9:latest
+
+ENV TZ=UTC
+
+EXPOSE 53/tcp 53/udp
+
+CMD ["named", "-g"]

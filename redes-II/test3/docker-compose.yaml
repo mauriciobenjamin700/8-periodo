@@ -1,96 +1,3 @@
-services:
-  # Roteador/Firewall
-  router:
-    image: ubuntu
-    container_name: router
-    command: sh -c "apt-get update && apt-get install -y iproute2 iptables && tail -f /dev/null"
-    networks:
-      subnet-A:
-        ipv4_address: 10.0.0.1
-      subnet-B:
-        ipv4_address: 20.0.0.1
-    cap_add:
-      - NET_ADMIN
-    sysctls:
-      net.ipv4.ip_forward: "1"  # Ativa o encaminhamento de pacotes
-
-  # Computadores Subrede A
-  pcA1:
-    image: ubuntu
-    container_name: pcA1
-    command: sh -c "sleep infinity"
-    networks:
-      subnet-A:
-        ipv4_address: 10.0.0.2
-
-  pcA2:
-    image: ubuntu
-    container_name: pcA2
-    command: sh -c "sleep infinity"
-    networks:
-      subnet-A:
-        ipv4_address: 10.0.0.3
-
-  # Servidor Web Subrede A
-  webA:
-    image: nginx
-    container_name: webA
-    networks:
-      subnet-A:
-        ipv4_address: 10.0.0.10
-
-  # Servidor DNS Subrede A
-  dnsA:
-    image: ubuntu/bind9
-    container_name: dnsA
-    environment:
-      - TZ=UTC
-    ports:
-      - "30051:53"
-      - "30051:53/udp"
-    networks:
-      subnet-A:
-        ipv4_address: 10.0.0.20
-
-  # Computadores Subrede B
-  pcB1:
-    image: ubuntu
-    container_name: pcB1
-    command: sh -c "sleep infinity"
-    networks:
-      subnet-B:
-        ipv4_address: 20.0.0.2
-
-
-  pcB2:
-    image: ubuntu
-    container_name: pcB2
-    command: sh -c "sleep infinity"
-    networks:
-      subnet-B:
-        ipv4_address: 20.0.0.3
-
-  # Servidor Web Subrede B
-  webB:
-    image: nginx
-    container_name: webB
-    networks:
-      subnet-B:
-        ipv4_address: 20.0.0.10
-
-  # Servidor DNS Subrede B
-  dnsB:
-    image: ubuntu/bind9
-    container_name: dnsB
-    environment:
-      - TZ=UTC
-    ports:
-      - "30052:53"
-      - "30052:53/udp"
-    networks:
-      subnet-B:
-        ipv4_address: 20.0.0.20
-
 networks:
   subnet-A:
     driver: bridge
@@ -103,3 +10,93 @@ networks:
     ipam:
       config:
         - subnet: 20.0.0.0/24
+
+
+services:
+  # Roteador/Firewall
+  firewall:
+    build:
+      context: ./firewall
+    container_name: firewall
+    networks:
+      subnet-A:
+        ipv4_address: 10.0.0.1
+      subnet-B:
+        ipv4_address: 20.0.0.1
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      net.ipv4.ip_forward: "1"  # Ativa o encaminhamento de pacotes
+
+  # Rede A
+  host1-net-a:
+    build: 
+      context: ./net-a/host1
+    container_name: host1-net-a
+    networks:
+      subnet-A:
+        ipv4_address: 10.0.0.2
+
+  host2-net-a:
+    build: 
+      context: ./net-a/host2
+    container_name: host2-net-a
+    networks:
+      subnet-A:
+        ipv4_address: 10.0.0.3
+
+  dns-a:
+    build: 
+      context: ./net-a/dns
+    container_name: dns-a
+    ports:
+      - "30051:53"
+      - "30051:53/udp"
+    networks:
+      subnet-A:
+        ipv4_address: 10.0.0.20
+
+  web-a:
+    build: 
+      context: ./net-a/web
+    container_name: web-a
+    networks:
+      subnet-A:
+        ipv4_address: 10.0.0.10
+
+  # Computadores Subrede B
+  host1-net-b:
+    build: 
+      context: ./net-b/host1
+    container_name: host1-net-b
+    networks:
+      subnet-B:
+        ipv4_address: 20.0.0.2
+
+
+  host2-net-b:
+    build: 
+      context: ./net-b/host2
+    container_name: host2-net-b
+    networks:
+      subnet-B:
+        ipv4_address: 20.0.0.3
+
+  web-b:
+    build: 
+      context: ./net-b/web
+    container_name: web-b
+    networks:
+      subnet-B:
+        ipv4_address: 20.0.0.10
+
+  dns-b:
+    build: 
+      context: ./net-b/dns
+    container_name: dns-b
+    ports:
+      - "30052:53"
+      - "30052:53/udp"
+    networks:
+      subnet-B:
+        ipv4_address: 20.0.0.20
