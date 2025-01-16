@@ -74,6 +74,8 @@ services:
     networks:
       subnet-A:
         ipv4_address: 10.0.0.10
+    ports:
+      - "8051:80"
 
   # Computadores Subrede B
   host1-net-b:
@@ -100,6 +102,8 @@ services:
     networks:
       subnet-B:
         ipv4_address: 20.0.0.10
+    ports:
+    - "8052:80"
 
   dns-b:
     build: 
