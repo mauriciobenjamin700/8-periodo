@@ -47,6 +47,8 @@ services:
     networks:
       subnet-A:
         ipv4_address: 10.0.0.2
+    dns:
+      - 10.0.0.20
 
   host2-net-a:
     build: 
@@ -55,6 +57,8 @@ services:
     networks:
       subnet-A:
         ipv4_address: 10.0.0.3
+    dns:
+      - 10.0.0.20
 
   dns-a:
     build: 
@@ -85,6 +89,8 @@ services:
     networks:
       subnet-B:
         ipv4_address: 20.0.0.2
+    dns:
+      - 10.0.0.20
 
 
   host2-net-b:
@@ -94,6 +100,8 @@ services:
     networks:
       subnet-B:
         ipv4_address: 20.0.0.3
+    dns:
+      - 10.0.0.20
 
   web-b:
     build: 

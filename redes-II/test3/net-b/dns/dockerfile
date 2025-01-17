@@ -4,4 +4,7 @@ ENV TZ=UTC
 
 EXPOSE 53/tcp 53/udp
 
+COPY ./named.conf /etc/bind/named.conf
+COPY ./db.empresa-b.com /etc/bind/db.empresa-b.com
+
 CMD ["named", "-g"]
