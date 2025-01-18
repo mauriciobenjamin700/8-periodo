@@ -49,6 +49,8 @@ services:
         ipv4_address: 10.0.0.2
     dns:
       - 10.0.0.20
+    dns_search:
+      - empresa-a.com
 
   host2-net-a:
     build: 
@@ -59,6 +61,8 @@ services:
         ipv4_address: 10.0.0.3
     dns:
       - 10.0.0.20
+    dns_search:
+      - empresa-a.com
 
   dns-a:
     build: 
@@ -90,7 +94,7 @@ services:
       subnet-B:
         ipv4_address: 20.0.0.2
     dns:
-      - 10.0.0.20
+      - 20.0.0.20
 
 
   host2-net-b:
@@ -101,7 +105,7 @@ services:
       subnet-B:
         ipv4_address: 20.0.0.3
     dns:
-      - 10.0.0.20
+      - 20.0.0.20
 
   web-b:
     build: 
