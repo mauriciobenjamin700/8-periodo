@@ -1,0 +1,14 @@
+FROM ubuntu/bind9:latest
+
+RUN apt-get update -y && apt-get install -y dnsutils
+
+ENV TZ=UTC
+
+EXPOSE 53/tcp 53/udp
+
+CMD ["sh", "-c", "sleep infinity"]
+
+# COPY ./named.conf /etc/bind/named.conf
+# COPY ./empresa-a.com.db /etc/bind/empresa-a.com.db
+
+# CMD ["named", "-g"]

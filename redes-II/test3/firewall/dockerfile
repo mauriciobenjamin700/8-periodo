@@ -2,9 +2,15 @@ FROM ubuntu:latest
 
 # Instalar ferramentas necessárias
 RUN apt-get update && apt-get install -y \
-    iproute2 iptables iputils-ping \
+    iproute2 iptables iputils-ping isc-dhcp-server \
     && echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf \
     && apt-get clean
 
+# Copiar configurações do DHCP
+COPY dhcpd.conf /etc/dhcp/dhcpd.conf
+COPY isc-dhcp-server /etc/default/isc-dhcp-server
+
 # Manter o container ativo
-CMD ["sh", "-c", "sysctl -p && tail -f /dev/null"]
+#CMD ["sh", "-c", "service isc-dhcp-server start && while true; do sleep 60; done"]
+#CMD ["sh", "-c", "service isc-dhcp-server start"]
+ CMD ["sh", "-c", "rm -f /var/run/dhcpd.pid && service isc-dhcp-server start && tail -f /dev/null"]

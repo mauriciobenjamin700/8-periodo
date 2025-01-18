@@ -11,9 +11,7 @@ networks:
       config:
         - subnet: 20.0.0.0/24
 
-
 services:
-  # Roteador/Firewall
   firewall:
     build:
       context: ./firewall
@@ -27,43 +25,25 @@ services:
         ipv4_address: 10.0.0.5
       subnet-B:
         ipv4_address: 20.0.0.5
-
-  # router:
-  #   image: ubuntu:latest
-  #   container_name: router
-  #   networks:
-  #     subnet-B:
-  #       ipv4_address: 20.0.0.5
-  #     subnet-A:
-  #       ipv4_address: 10.0.0.5
-  #   command: bash -c "apt-get update && apt-get install -y iproute2 && bash"
-
-
   # Rede A
   host1-net-a:
     build: 
-      context: ./net-a/host1
+      context: ./net-a/host
     container_name: host1-net-a
     networks:
       subnet-A:
-        # ipv4_address: 10.0.0.2
+        ipv4_address: 10.0.0.2
     dns:
       - 10.0.0.20
-    dns_search:
-      - empresa-a.com
-
   host2-net-a:
     build: 
-      context: ./net-a/host2
+      context: ./net-a/host
     container_name: host2-net-a
     networks:
       subnet-A:
-        # ipv4_address: 10.0.0.3
+        ipv4_address: 10.0.0.3
     dns:
       - 10.0.0.20
-    dns_search:
-      - empresa-a.com
-
   dns-a:
     build: 
       context: ./net-a/dns
@@ -74,7 +54,6 @@ services:
     networks:
       subnet-A:
         ipv4_address: 10.0.0.20
-
   web-a:
     build: 
       context: ./net-a/web
@@ -84,29 +63,25 @@ services:
         ipv4_address: 10.0.0.10
     ports:
       - "8051:80"
-
   # Computadores Subrede B
   host1-net-b:
     build: 
-      context: ./net-b/host1
+      context: ./net-b/host
     container_name: host1-net-b
     networks:
       subnet-B:
-        # ipv4_address: 20.0.0.2
+        ipv4_address: 20.0.0.2
     dns:
       - 20.0.0.20
-
-
   host2-net-b:
     build: 
-      context: ./net-b/host2
+      context: ./net-b/host
     container_name: host2-net-b
     networks:
       subnet-B:
-        # ipv4_address: 20.0.0.3
+        ipv4_address: 20.0.0.3
     dns:
       - 20.0.0.20
-
   web-b:
     build: 
       context: ./net-b/web
@@ -116,7 +91,6 @@ services:
         ipv4_address: 20.0.0.10
     ports:
     - "8052:80"
-
   dns-b:
     build: 
       context: ./net-b/dns

@@ -1,7 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get update -y && apt-get install -y curl && apt-get install iputils-ping -y
-
+RUN apt-get update && apt-get update -y && apt-get install -y curl && apt-get install iputils-ping -y && apt-get install net-tools -y
 # RUN echo "nameserver 10.0.0.20" >> /etc/resolv.conf
 
 

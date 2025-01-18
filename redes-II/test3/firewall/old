@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+
+# Instalar ferramentas necessárias
+RUN apt-get update && apt-get install -y \
+    iproute2 iptables iputils-ping \
+    && echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf \
+    && apt-get clean
+
+# Manter o container ativo
+CMD ["sh", "-c", "sysctl -p && tail -f /dev/null"]
