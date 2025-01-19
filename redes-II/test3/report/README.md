@@ -382,12 +382,13 @@ Portanto, o driver bridge do Docker atua como o switch que conecta os componente
 Com toda a explicação realizada, vamos testar se realmente funcionou a criação da nossa infraestrutura!
 
 Anote estes comando, pois serão importantes para testar e visualizar o projeto!
+
 **obs:** Para o meu sistema operacional `Linux Ubuntu 24.04` eu uso o comando `docker compose` para interagir com meu arquivo `docker-compose.yaml`, mas caso não funcione para você, tente usar `docker-compose`, pois em alguns sistemas operacionais, vai funcionar somente desse jeito.
 
 - `docker compose up -d --build` : É o comando docker usado para executar a infraestrutura modelada pelo arquivo `docker-compose.yaml`, além de atualizar sempre que você fizer alguma alteração nos seus arquivos `dockerfile`
 - `docker compose down` : É o comando usado para encerrar a infraestrutura, tanto para manutenção quanto para casos de exclusão de containers.
 - `docker exec it "CONTAINER" "COMANDO"` :É o comando usado para executar um container de modo interativo, permitindo pedir que ele execute uma ação e retorne o resultado em nosso terminal. Será extremamente útil para testes, simulações e ajustes finos caso precisemos.
-- `docker ps` : É o comando usado para listar no terminal, todos os containers em execução, onde podemos usar `docker ps -a` para listar todos os containers, incluido os parados.
+- `docker ps` : É o comando usado para listar no terminal, todos os containers em execução, onde podemos usar `docker ps -a` para listar todos os containers, incluindo os parados.
 
 Dito isso, vamos `buildar` nossa infraestrutura com base no `docker-compose.yaml`
 
@@ -760,4 +761,267 @@ COPY ./empresa-b.com.conf /etc/nginx/conf.d/
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Agora vamos fazer um pequeno teste (que vai dar errado) com os servidores web
+Agora vamos fazer um pequeno teste (que vai dar parcialmente errado) com os servidores web
+
+Abra seu terminal e execute `docker exec -it host1-net-a bash` para acessar o `host1` da rede `A`.
+
+Tentaremos fazer uma requisição para o servidor web pedindo pela página que adicionamos pelo dockerfile. Estaremos usando o comando `curl 10.0.0.10` para solicitar diretamente pelo endereço ip do servidor web e posteriormente pelo domínio que atribuímos usando `curl www.empresa-a.com` (este vai falhar, observe).
+
+Requisição Bem Sucedida ao Servidor Web da Rede A
+
+![Requisição Bem Sucedida ao Servidor Web da Rede A](./images/curl-10.0.0.10.png)
+
+Requisição Bem Falha ao Servidor Web da Rede A
+
+![Requisição Falha ao Servidor Web da Rede A](./images/curl-www.empresa-a.com-fail.png)
+
+**OBS:** Você deve estar se perguntando como eu tenha certeza que ia falhar certo?
+
+Bem, para que possamos usar nomes ao invés de endereços ips, precisamos configurar nosso servidor DNS (Coisa que não fizemos ainda, mas vamos fazer)
+
+Vamos configurar o nosso servidor DNS agora, para isso iremos precisar de dois novos arquivos e alguns leves ajustes no `dockerfile` dos dns das redes `A` e `B`
+
+Para a rede `A` usaremos a seguinte configuração em um arquivo nomeado como `empresa-a.com.db`, onde este arquivo será um arquivo de zona DNS que configura o servidor DNS principal (ns1.empresa-a.com) e mapeia vários nomes de host (www, host1, host2) para seus respectivos endereços IP na Sub-rede A.
+
+```db
+$TTL    86400
+@       IN      SOA     ns1.empresa-a.com. root.empresa-a.com. (
+                      20250117    ; Serial
+                      3600        ; Refresh
+                      1800        ; Retry
+                      1209600     ; Expire
+                      86400 )     ; Minimum TTL
+
+        IN      NS      ns1.empresa-a.com.
+ns1     IN      A       10.0.0.20  ; IP do servidor DNS na Sub-rede A
+www     IN      A       10.0.0.10  ; IP do container web-a
+host1   IN      A       10.0.0.2   ; IP do container host1-net-a
+host2   IN      A       10.0.0.3   ; IP do container host2-net-a
+```
+
+Onde podemos resumir brevemente o conteúdo do arquivo da seguinte forma:
+
+- $TTL 86400
+  - $TTL: Define o Time To Live (TTL) padrão para os registros DNS nesta zona.
+  - 86400: O valor é em segundos, equivalente a 24 horas. Isso significa que os registros DNS serão armazenados em cache por 24 horas.
+- @ IN SOA ns1.empresa-a.com. root.empresa-a.com.
+  - @: Representa o domínio raiz da zona (neste caso, empresa-a.com).
+  - IN: Indica que este é um registro de Internet.
+  - SOA: Start of Authority, define o servidor DNS principal para a zona.
+  - ns1.empresa-a.com.: Nome do servidor DNS principal.
+  - root.empresa-a.com.: Email do administrador da zona, onde o . substitui o @.
+- Parâmetros do SOA
+  - 20250117: Serial number, usado para identificar a versão da zona. Deve ser incrementado a cada mudança.
+  - 3600: Refresh, intervalo em segundos para que os servidores secundários verifiquem atualizações (1 hora).
+  - 1800: Retry, intervalo em segundos para tentar novamente após uma falha (30 minutos).
+  - 1209600: Expire, tempo em segundos para que os servidores secundários considerem os dados obsoletos (14 dias).
+  - 86400: Minimum TTL, tempo mínimo em segundos para armazenar em cache os registros negativos (24 horas).
+- IN NS ns1.empresa-a.com.
+  - IN: Indica que este é um registro de Internet.
+  - NS: Name Server, define o servidor DNS para a zona.
+  - ns1.empresa-a.com.: Nome do servidor DNS.
+- Registros A
+  - ns1 IN A 10.0.0.20: Mapeia ns1.empresa-a.com para o endereço IP 10.0.0.20 (servidor DNS na Sub-rede A).
+  - www IN A 10.0.0.10: Mapeia www.empresa-a.com para o endereço IP 10.0.0.10 (container web-a).
+  - host1 IN A 10.0.0.2: Mapeia host1.empresa-a.com para o endereço IP 10.0.0.2 (container host1-net-a).
+  - host2 IN A 10.0.0.3: Mapeia host2.empresa-a.com para o endereço IP 10.0.0.3 (container host2-net-a).
+
+Dado a explicação a cima, vamos deixar este arquivo salvo conforme a estrutura a baixo
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+            empresa-a.com.db
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-a.com.conf
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-b.com.conf
+            index.html
+```
+
+Agora vamos precisar configurar o arquivo `named.conf`, onde este arquivo de configuração é para o servidor DNS BIND e define as opções globais e a configuração de uma zona específica.
+
+```conf
+options {
+    directory "/var/cache/bind";
+    # Permite consultas de qualquer IP
+    allow-query { any; };  
+    # IP do DNS na Sub-rede A
+    listen-on { 10.0.0.20; };  
+};
+
+zone "empresa-a.com" IN {
+    # Tipo de zona: Master ou Slave, onde podem ser usados como primary and secondary
+    type master; 
+    # Caminho para o arquivo de zona de empresa-a.com
+    file "/etc/bind/empresa-a.com.db";  
+};
+```
+
+Este arquivo se divide em duas partes principais, sendo elas `zone` (configuração de zona) e `options` (opções globais). Vamos discutir um pouco antes de dar sequência:
+
+- options:
+
+  - directory "/var/cache/bind"; : Define o diretório onde o BIND armazenará seus arquivos de cache.
+  - allow-query { any; }; : Permite que qualquer IP faça consultas ao servidor DNS. Isso significa que o servidor DNS responderá a consultas de qualquer origem.
+  - listen-on { 10.0.0.20; }; : Especifica o endereço IP no qual o servidor DNS deve escutar por consultas. Neste caso, ele está configurado para escutar no IP 10.0.0.20, que é o IP do servidor DNS na Sub-rede A.
+
+- zone:
+  - zone "empresa-a.com" IN : Define uma nova zona DNS para o domínio empresa-a.com.
+  - type master; : Especifica que este servidor DNS é o servidor mestre (master) para esta zona. Isso significa que ele é o servidor autoritativo e contém a cópia original dos dados da zona.
+  - file "/etc/bind/empresa-a.com.db"; : Especifica o caminho para o arquivo de zona que contém os registros DNS para empresa-a.com. Este arquivo (empresa-a.com.db) contém os mapeamentos de nomes de domínio para endereços IP e outras informações de configuração para a zona.
+
+Muita informação certo?
+
+Um resuminho pra ajudar: Este arquivo de configuração define as opções globais para o servidor DNS BIND, permitindo consultas de qualquer IP e escutando no IP 10.0.0.20. Ele também configura uma zona mestre para o domínio empresa-a.com, especificando o caminho para o arquivo de zona que contém os registros DNS.
+
+Ao final, teremos a seguinte estrutura:
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+            empresa-a.com.db
+            named.conf
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-a.com.conf
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-b.com.conf
+            index.html
+```
+
+Feito isso, vamos alterar nosso `dockerfile` do `dns` da rede `A` da seguinte forma:
+
+```dockerfile
+FROM ubuntu/bind9:latest
+
+RUN apt-get update -y && apt-get install -y dnsutils
+
+ENV TZ=UTC
+
+EXPOSE 53/tcp 53/udp
+
+COPY ./named.conf /etc/bind/named.conf
+
+COPY ./empresa-a.com.db /etc/bind/empresa-a.com.db
+
+CMD ["named", "-g"]
+
+```
+
+Prontinho, agora vamos apenas replicar a nossa configuração para o `dns` da rede `B`. Como já detalhei melhor anteriormente, serei mais direto, mas o processo é praticamente o mesmo.
+
+Arquivo `empresa-b.com.db`
+
+```db
+$TTL    86400
+@       IN      SOA     ns1.empresa-b.com. root.empresa-b.com. (
+                      20250117    ; Serial
+                      3600        ; Refresh
+                      1800        ; Retry
+                      1209600     ; Expire
+                      86400 )     ; Minimum TTL
+
+        IN      NS      ns1.empresa-b.com.
+ns1     IN      A       20.0.0.20  ; IP do servidor DNS na Sub-rede B
+www     IN      A       20.0.0.10  ; IP do container web-b
+host1   IN      A       20.0.0.2   ; IP do container host1-net-b
+host2   IN      A       20.0.0.3   ; IP do container host2-net-b
+```
+
+Arquivo `named.conf`
+
+```conf
+// /etc/bind/named.conf
+
+options {
+    directory "/var/cache/bind";
+    allow-query { any; };  
+    listen-on { 20.0.0.20; };  
+    #// IP do DNS na Sub-rede B
+};
+
+zone "empresa-b.com" IN {
+    type master; 
+    file "/etc/bind/empresa-b.com.db";  
+};
+```
+
+Ao final, teremos a seguinte estrutura:
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+            empresa-a.com.db
+            named.conf
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-a.com.conf
+            index.html
+    net-b/
+        dns/
+            dockerfile
+            empresa-b.com.db
+            named.conf
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-b.com.conf
+            index.html
+```
+
+Feito isso, vamos alterar nosso `dockerfile` do `dns` da rede `B` da seguinte forma:
+
+```dockerfile
+FROM ubuntu/bind9:latest
+
+RUN apt-get update -y && apt-get install -y dnsutils
+
+ENV TZ=UTC
+
+EXPOSE 53/tcp 53/udp
+
+COPY ./named.conf /etc/bind/named.conf
+
+COPY ./empresa-b.com.db /etc/bind/empresa-b.com.db
+
+CMD ["named", "-g"]
+
+```
