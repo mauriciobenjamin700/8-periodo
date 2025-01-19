@@ -315,7 +315,7 @@ services:
 
 Fique tranquilo que vamos discutir o `docker-compose.yaml` passo a passo!
 
-- **networks:** Iremos construir nossas redes neste bloco, para atender as subredes a e b da Figura
+- **networks:** Iremos construir nossas redes neste bloco, para atender as sub-redes a e b da Figura
   - *subnet-A:*
     - Usa o driver bridge para criar uma rede de ponte.
     - Configurada com o intervalo de endereços IP 10.0.0.0/24.
@@ -329,48 +329,48 @@ Fique tranquilo que vamos discutir o `docker-compose.yaml` passo a passo!
     - Adiciona a capacidade NET_ADMIN para manipular configurações de rede.
     - Habilita o roteamento de pacotes com net.ipv4.ip_forward: "1".
     - Conectado a subnet-A com o IP 10.0.0.5 e a subnet-B com o IP 20.0.0.5.
-  - *host1-net-a:* Representa o host1 da subrede A
+  - *host1-net-a:* Representa o host1 da sub-rede A
     - Constrói a partir do dockerfile no contexto ./net-a/host.
     - Nome do container: host1-net-a.
     - Conectado a subnet-A com o IP 10.0.0.2.
     - Usa o DNS 10.0.0.20.
-  - *host2-net-a:* Representa o host2 da subrede A
+  - *host2-net-a:* Representa o host2 da sub-rede A
     - Constrói a partir do dockerfile contexto ./net-a/host.
     - Nome do container: host2-net-a.
     - Conectado a subnet-A com o IP 10.0.0.3.
     - Usa o DNS 10.0.0.20.
-  - *dns-a:* Representa o servidor DNS que fica responsável pela subrede A
+  - *dns-a:* Representa o servidor DNS que fica responsável pela sub-rede A
     - Constrói a partir do contexto dns.
     - Nome do container: dns-a.
     - Mapeia as portas 30051:53 e 30051:53/udp.
     - Conectado a subnet-A com o IP 10.0.0.20.
-  - *web-a:* Representa o servidor WEB que fica responsável pela subrede A
+  - *web-a:* Representa o servidor WEB que fica responsável pela sub-rede A
     - Constrói a partir do contexto web.
     - Nome do container: web-a.
     - Conectado a subnet-A com o IP 10.0.0.10.
     - Mapeia a porta 8051:80.
-  - *host1-net-b:* Representa o host1 da subrede B
+  - *host1-net-b:* Representa o host1 da sub-rede B
     - Constrói a partir do contexto ./net-b/host.
     - Nome do container: host1-net-b.
     - Conectado a subnet-B com o IP 20.0.0.2.
     - Usa o DNS 20.0.0.20.
-  - *host2-net-b:* Representa o host2 da subrede B
+  - *host2-net-b:* Representa o host2 da sub-rede B
     - Constrói a partir do contexto ./net-b/host.
     - Nome do container: host2-net-b.
     - Conectado a subnet-B com o IP 20.0.0.3.
     - Usa o DNS 20.0.0.20.
-  - *web-b:* Representa o servidor WEB que fica responsável pela subrede B
+  - *web-b:* Representa o servidor WEB que fica responsável pela sub-rede B
     - Constrói a partir do contexto web.
     - Nome do container: web-b.
     - Conectado a subnet-B com o IP 20.0.0.10.
     - Mapeia a porta 8052:80.
-  - *dns-b:* Representa o servidor DNS que fica responsável pela subrede B
+  - *dns-b:* Representa o servidor DNS que fica responsável pela sub-rede B
     - Constrói a partir do contexto dns.
     - Nome do container: dns-b.
     - Mapeia as portas 30052:53 e 30052:53/udp.
     - Conectado a subnet-B com o IP 20.0.0.20.
 
-*obs:* Voce pode estar se perguntando "E os switchs?", fique calmo que vou te explicar!
+*obs:* Voce pode estar se perguntando "E os switches?", fique calmo que vou te explicar!
 
 No Docker, o driver de rede `bridge` atua como um `switch virtual` que conecta os containers dentro da mesma rede. No nosso arquivo `docker-compose.yaml`, as redes `subnet-A` e `subnet-B` usam o driver bridge, o que significa que cada rede tem seu próprio switch virtual
 
@@ -401,11 +401,11 @@ Você irá visualizar algo semelhante a Figura a baixo:
 
 Aguarde terminar a construção.
 
-Quando terminar, use `docker ps` e veja que todos os containers que queriamos criar, foram criados e estão semelhantes a Figura a baixo.
+Quando terminar, use `docker ps` e veja que todos os containers que queríamos criar, foram criados e estão semelhantes a Figura a baixo.
 
 ![docker ps](images/docker-ps-q1.png)
 
-### 2. Atribuir endereço IPs nos hosts de forma que seja respeitado a subrede. Usar máscara de rede de 24 bits. Sub-rede A= 10.0.0.0; Sub-rede B=20.0.0.0; (1pt)
+### 2. Atribuir endereço IPs nos hosts de forma que seja respeitado a sub-rede. Usar máscara de rede de 24 bits. Sub-rede A= 10.0.0.0; Sub-rede B=20.0.0.0; (1pt)
 
 Se observamos bem o `docker-compose.yaml`, pode-se reparar que os hosts tem seu endereço ipv4 definido, além de estarem nos intervalos corretos conforme solicitado na questão.
 
@@ -475,7 +475,7 @@ services:
         ipv4_address: 10.0.0.10
     ports:
       - "8051:80"
-  # Computadores Subrede B
+  # Computadores Sub-rede B
   host1-net-b:
     build: 
       context: ./net-b/host
@@ -515,15 +515,15 @@ services:
         ipv4_address: 20.0.0.20
 ```
 
-Para garantir que as subredes estão sendo respeitadas, podemos usar o comando `ping` para testar a comunicação entre os containers, usando o seguinte processo
+Para garantir que as sub-redes estão sendo respeitadas, podemos usar o comando `ping` para testar a comunicação entre os containers, usando o seguinte processo
 
-- Use o comando `docker exec -it host1-net-a bash` para acessar o terminal do container `host1-net-a` que é nosso `host1 da rede A` e tente pingar o container `host2 da rede A` atráves do seu endereço IP que é `10.0.0.3`
+- Use o comando `docker exec -it host1-net-a bash` para acessar o terminal do container `host1-net-a` que é nosso `host1 da rede A` e tente pingar o container `host2 da rede A` através do seu endereço IP que é `10.0.0.3`
 - Use `ping 10.0.0.3`
 - Observe a Figura a baixo e veja que estamos sim conseguindo comunicação com o `host2` que está na mesma rede que o `host1`
 
 ![Ping no Host2 pelo Host1 da Rede A](images/ping-net-a-host1-host2.png)
 
-Agora se tentarmos nos comunicar com outro host da rede `B` não iremos conseguir, por causa que as subredes estão sendo respeitadas, e até que o firewall esteja pronto para intermediar a comunicação, não haverá comunicação entre redes!
+Agora se tentarmos nos comunicar com outro host da rede `B` não iremos conseguir, por causa que as sub-redes estão sendo respeitadas, e até que o firewall esteja pronto para intermediar a comunicação, não haverá comunicação entre redes!
 
 ![Ping no Host2 da Rede B pelo Host1 da Rede A](./images/ping-net-a-host-1-host2-net-b.png)
 
@@ -624,7 +624,7 @@ infra/
 
 **OBS** : Fique a vontade para usar o arquivo HTML que preferir, pois o usado neste guia é apenas um exemplo.
 
-Agora vamos precisar de arquivo de configuração para que nossos servidores web `A` e `B` estejam prontos para "ouvir" pedidos pelas páginas atráves de respectivamente [www.empresa-a.com](www.empresa-a.com) e [www.empresa-b.com](www.empresa-b.com)
+Agora vamos precisar de arquivo de configuração para que nossos servidores web `A` e `B` estejam prontos para "ouvir" pedidos pelas páginas através de respectivamente [www.empresa-a.com](www.empresa-a.com) e [www.empresa-b.com](www.empresa-b.com)
 
 Para o servidor web da rede `A`, crie o arquivo `empresa-a.com.conf` e insira o seguinte conteúdo
 
@@ -737,7 +737,7 @@ FROM nginx:latest
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Iremos modificalos para que o mesmo copie tanto nosso arquivo de configurações quanto nossa página html.
+Iremos modificá-los para que o mesmo copie tanto nosso arquivo de configurações quanto nossa página html.
 
 `Servidor Web da Rede A`
 
@@ -822,7 +822,7 @@ Onde podemos resumir brevemente o conteúdo do arquivo da seguinte forma:
   - ns1.empresa-a.com.: Nome do servidor DNS.
 - Registros A
   - ns1 IN A 10.0.0.20: Mapeia ns1.empresa-a.com para o endereço IP 10.0.0.20 (servidor DNS na Sub-rede A).
-  - www IN A 10.0.0.10: Mapeia www.empresa-a.com para o endereço IP 10.0.0.10 (container web-a).
+  - www IN A 10.0.0.10: Mapeia [www.empresa-a.com](www.empresa-a.com) para o endereço IP 10.0.0.10 (container web-a).
   - host1 IN A 10.0.0.2: Mapeia host1.empresa-a.com para o endereço IP 10.0.0.2 (container host1-net-a).
   - host2 IN A 10.0.0.3: Mapeia host2.empresa-a.com para o endereço IP 10.0.0.3 (container host2-net-a).
 
@@ -1025,3 +1025,108 @@ COPY ./empresa-b.com.db /etc/bind/empresa-b.com.db
 CMD ["named", "-g"]
 
 ```
+
+Com essa configuração feita, agora vamos acessar um container de cada rede e fazer requisições para seus respectivos servidores, e validar que os servidores vão responder usando o domínio.
+
+Passo a Passo:
+
+- 1.Derrube os containers, caso estejam em execução usando `docker compose down`
+- 2.Inicie os containers atualizados usando `docker compose up -d --build`
+- 3.Acesse um container usando `docker exec -it host1-net-a bash`
+- 4.Faça a requisição ao seu servidor usando `curl www.empresa-a.com`
+- 5.Observe que o resultado será semelhante a Figura a baixo
+
+![Sucesso para Curl na Empresa A](images/curl-www.empresa-a.com-success.png)
+
+Agora vamos aplicar o mesmo processo, usando um host da rede `B` para uma requisição ao servidor web de sua respectiva rede
+
+- 1.Acesse um container usando `docker exec -it host1-net-b bash`
+- 2.Faça a requisição ao seu servidor usando `curl www.empresa-b.com`
+- 3.Observe que o resultado será semelhante a Figura a baixo
+
+![Sucesso para CUrl na Empresa B](images/curl-www.empresa-b.com-success.png)
+
+Prontinho, agora conseguimos solicitar a página correta através de um DNS!
+
+**Bonus:** Se você está lembrando, no nosso `docker-compose.yaml` está com mapeamento de porta para os containers dos servidores web das redes `A` e `B` respectivamente, logo podemos acessá-los pelo navegador de nossas maquinas nos endereços [127.0.0.1:8051](http://127.0.0.1:8051) e [127.0.0.1:8052](http://127.0.0.1:8052). Resultado nas Figuras a Baixo.
+
+![Bônus A](./images/bonus-a.png)
+![Bônus B](./images/bonus-b.png)
+
+### 4. Instalar e configurar o Servidor DNS, onde: na sub-rede A deve resolver todos os nomes dos hosts da mesma sub-rede e na sub-rede B deve resolver todos os nomes dos hosts da mesma sub-rede
+
+Na questão 3, precisamos configurar o servidor DNS de cada rede para resolver os nomes dos nossos "sites" para que o servidor web de cada rede devolvesse o conteúdo esperado quando requisitávamos. Nesse processo acabamos já configurando também para que os hosts pudessem interagir entre sí, portanto vamos provar isso usando o comando `ping` para fazer com que os hosts se "pinguem" usando seus ips e como resolução de DNS.
+
+Passo a passo:
+
+- 1.Acesse o Host1 da Rede `A` usando `docker exec -it host1-net-a bash`
+- 2.Pingue o Host2 da mesma rede usando o IP dele `ping 10.0.0.3`
+- 3.Observe que você irá obter um resultado semelhante a este:
+
+```bash
+root@f7f2a33d19f3:/# ping 10.0.0.3 
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.110 ms
+64 bytes from 10.0.0.3: icmp_seq=2 ttl=64 time=0.086 ms
+64 bytes from 10.0.0.3: icmp_seq=3 ttl=64 time=0.096 ms
+64 bytes from 10.0.0.3: icmp_seq=4 ttl=64 time=0.084 ms
+^C
+--- 10.0.0.3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3093ms
+rtt min/avg/max/mdev = 0.084/0.094/0.110/0.010 ms
+root@f7f2a33d19f3:/# 
+```
+
+- 4.Agora iremos pingar usando o DNS, use `ping host1.empresa-a.com`
+- 5.Observe que você irá obter um resultado semelhante a este:
+
+```bash
+root@f7f2a33d19f3:/# ping host2.empresa-a.com
+PING host2.empresa-a.com (10.0.0.3) 56(84) bytes of data.
+64 bytes from host2-net-a.report_subnet-A (10.0.0.3): icmp_seq=1 ttl=64 time=0.096 ms
+64 bytes from host2-net-a.report_subnet-A (10.0.0.3): icmp_seq=2 ttl=64 time=0.077 ms
+64 bytes from host2-net-a.report_subnet-A (10.0.0.3): icmp_seq=3 ttl=64 time=0.117 ms
+64 bytes from host2-net-a.report_subnet-A (10.0.0.3): icmp_seq=4 ttl=64 time=0.089 ms
+^C
+--- host2.empresa-a.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3051ms
+rtt min/avg/max/mdev = 0.077/0.094/0.117/0.014 ms
+root@f7f2a33d19f3:/# 
+```
+
+- 6.Observe que foi feita a tradução e a mesma maquina respondeu ao comando ping usando diretamente com **IP** ou indiretamente usando o **DNS**
+
+Iremos executar o mesmo processo nos hosts da rede `B`. Então para evitar ser repetitivo vou apenas colocar os comandos e confio que você conseguirá chegar nos mesmos resultados
+
+Use `docker exec -it host1-net-b bash`
+
+Pingando o Host2 pelo Host1 usando o IP 20.0.0.3 do host2
+
+```bash
+root@e04ec8d62edc:/# ping 20.0.0.3
+PING 20.0.0.3 (20.0.0.3) 56(84) bytes of data.
+64 bytes from 20.0.0.3: icmp_seq=1 ttl=64 time=0.268 ms
+64 bytes from 20.0.0.3: icmp_seq=2 ttl=64 time=0.097 ms
+64 bytes from 20.0.0.3: icmp_seq=3 ttl=64 time=0.094 ms
+^C
+--- 20.0.0.3 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2076ms
+rtt min/avg/max/mdev = 0.094/0.153/0.268/0.081 ms
+```
+
+Pingando o Host2 pelo Host1 usando o dns host2.empresa-b.com do host2
+
+```bash
+root@e04ec8d62edc:/# ping host2.empresa-b.com
+PING host2.empresa-b.com (20.0.0.3) 56(84) bytes of data.
+64 bytes from host2-net-b.report_subnet-B (20.0.0.3): icmp_seq=1 ttl=64 time=0.087 ms
+64 bytes from host2-net-b.report_subnet-B (20.0.0.3): icmp_seq=2 ttl=64 time=0.086 ms
+64 bytes from host2-net-b.report_subnet-B (20.0.0.3): icmp_seq=3 ttl=64 time=0.085 ms
+^C
+--- host2.empresa-b.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2028ms
+rtt min/avg/max/mdev = 0.085/0.086/0.087/0.000 ms
+root@e04ec8d62edc:/# 
+```
+
+### 5. Adicionar no Firewall um servidor DHCP para atribuir endereços automaticamente nos hosts, onde: demonstrar o funcionamento da atribuição dos endereços IP e garantir que os hosts de cada sub-rede tem o netid respeitados
