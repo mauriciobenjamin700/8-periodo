@@ -1,3 +1,6 @@
 FROM nginx:latest
 
+COPY ./index.html /usr/share/nginx/html
+COPY ./empresa-a.com.conf /etc/nginx/conf.d/
+
 CMD ["nginx", "-g", "daemon off;"]

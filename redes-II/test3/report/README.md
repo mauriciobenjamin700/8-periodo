@@ -379,6 +379,31 @@ No Docker, o driver de rede `bridge` atua como um `switch virtual` que conecta o
 
 Portanto, o driver bridge do Docker atua como o switch que conecta os componentes da rede subnet-A internamente.
 
+Com toda a explicação realizada, vamos testar se realmente funcionou a criação da nossa infraestrutura!
+
+Anote estes comando, pois serão importantes para testar e visualizar o projeto!
+**obs:** Para o meu sistema operacional `Linux Ubuntu 24.04` eu uso o comando `docker compose` para interagir com meu arquivo `docker-compose.yaml`, mas caso não funcione para você, tente usar `docker-compose`, pois em alguns sistemas operacionais, vai funcionar somente desse jeito.
+
+- `docker compose up -d --build` : É o comando docker usado para executar a infraestrutura modelada pelo arquivo `docker-compose.yaml`, além de atualizar sempre que você fizer alguma alteração nos seus arquivos `dockerfile`
+- `docker compose down` : É o comando usado para encerrar a infraestrutura, tanto para manutenção quanto para casos de exclusão de containers.
+- `docker exec it "CONTAINER" "COMANDO"` :É o comando usado para executar um container de modo interativo, permitindo pedir que ele execute uma ação e retorne o resultado em nosso terminal. Será extremamente útil para testes, simulações e ajustes finos caso precisemos.
+- `docker ps` : É o comando usado para listar no terminal, todos os containers em execução, onde podemos usar `docker ps -a` para listar todos os containers, incluido os parados.
+
+Dito isso, vamos `buildar` nossa infraestrutura com base no `docker-compose.yaml`
+
+- Abra seu terminal na pasta do projeto
+- Use o `comando docker compose up -d --build`
+
+Você irá visualizar algo semelhante a Figura a baixo:
+
+![docker-compose up -d --build](./images/compose-build.png)
+
+Aguarde terminar a construção.
+
+Quando terminar, use `docker ps` e veja que todos os containers que queriamos criar, foram criados e estão semelhantes a Figura a baixo.
+
+![docker ps](images/docker-ps-q1.png)
+
 ### 2. Atribuir endereço IPs nos hosts de forma que seja respeitado a subrede. Usar máscara de rede de 24 bits. Sub-rede A= 10.0.0.0; Sub-rede B=20.0.0.0; (1pt)
 
 Se observamos bem o `docker-compose.yaml`, pode-se reparar que os hosts tem seu endereço ipv4 definido, além de estarem nos intervalos corretos conforme solicitado na questão.
@@ -488,3 +513,251 @@ services:
       subnet-B:
         ipv4_address: 20.0.0.20
 ```
+
+Para garantir que as subredes estão sendo respeitadas, podemos usar o comando `ping` para testar a comunicação entre os containers, usando o seguinte processo
+
+- Use o comando `docker exec -it host1-net-a bash` para acessar o terminal do container `host1-net-a` que é nosso `host1 da rede A` e tente pingar o container `host2 da rede A` atráves do seu endereço IP que é `10.0.0.3`
+- Use `ping 10.0.0.3`
+- Observe a Figura a baixo e veja que estamos sim conseguindo comunicação com o `host2` que está na mesma rede que o `host1`
+
+![Ping no Host2 pelo Host1 da Rede A](images/ping-net-a-host1-host2.png)
+
+Agora se tentarmos nos comunicar com outro host da rede `B` não iremos conseguir, por causa que as subredes estão sendo respeitadas, e até que o firewall esteja pronto para intermediar a comunicação, não haverá comunicação entre redes!
+
+![Ping no Host2 da Rede B pelo Host1 da Rede A](./images/ping-net-a-host-1-host2-net-b.png)
+
+### 3. Instalar e configurar o Servidor web, onde: na sub-rede A deve-se expor a página [www.empresa-a.com](www.empresa-a.com) e na sub-rede B deve expor a página [www.empresa-b.com](www.empresa-b.com) (1pt)
+
+Para Instalar e configurar de forma personalizada nosso servidor web `nginx`, iremos precisar de alguns arquivos e configurações adicionais. Inicialmente vamos criar a página que nossos servidores web irão expor.
+
+Para o servidor web da rede A, usaremos o seguinte conteúdo para o arquivo html
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>empresa-a</title>
+</head>
+<body>
+
+    <h1>Empresa A</h1>
+    <p>Olá, seja bem-vindo a empresa A.</p>
+    <p>Estamos felizes em te receber.</p>
+    
+</body>
+</html>
+```
+
+Copie o conteúdo a cima em um arquivo `index.html` e o salve na pasta `web` da rede `A` conforme apresentando a baixo.
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+```
+
+Agora vamos repetir o processo para a pasta `web` da rede `B`!
+
+Para o servidor web da rede `B`, usaremos o seguinte conteúdo para o arquivo html
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>empresa-b</title>
+</head>
+<body>
+
+    <h1>Empresa B</h1>
+    <p>Olá, seja bem-vindo a empresa B.</p>
+    <p>Estamos felizes em te receber.</p>
+    
+</body>
+</html>
+```
+
+Copie o conteúdo a cima em um arquivo `index.html` e o salve na pasta `web` da rede `B` conforme apresentando a baixo.
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            index.html
+```
+
+**OBS** : Fique a vontade para usar o arquivo HTML que preferir, pois o usado neste guia é apenas um exemplo.
+
+Agora vamos precisar de arquivo de configuração para que nossos servidores web `A` e `B` estejam prontos para "ouvir" pedidos pelas páginas atráves de respectivamente [www.empresa-a.com](www.empresa-a.com) e [www.empresa-b.com](www.empresa-b.com)
+
+Para o servidor web da rede `A`, crie o arquivo `empresa-a.com.conf` e insira o seguinte conteúdo
+
+```nginx
+server {
+    listen 80;
+    server_name www.empresa-a.com;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+Uma breve explicação sobre o bloco a cima:
+
+- **server** { ... }: Define um bloco de configuração de servidor virtual.
+- **listen 80;**: Especifica que o servidor deve escutar na porta 80, que é a porta padrão para HTTP.
+- **server_name [www.empresa-a.com](www.empresa-a.com);**: Define o nome do servidor (domínio) que este bloco de configuração deve atender.
+- **root /usr/share/nginx/html;**: Define o diretório raiz onde os arquivos do site estão localizados.
+- **index index.html;**: Define o arquivo padrão a ser servido quando um diretório é requisitado.
+- **location / { ... }**: Define um bloco de localização para a raiz do site (/).
+- **try_files $uri $uri/ =404;**: Tenta servir o arquivo requisitado ($uri). Se não encontrado, tenta servir como diretório ($uri/). Se ainda não encontrado, retorna erro 404.
+
+Este bloco de configuração é usado para configurar o Nginx para servir um site estático localizado em /usr/share/nginx/html para o domínio [www.empresa-a.com](www.empresa-a.com).
+
+Observe que teremos adicionar nosso arquivo index.html neste diretório do container `/usr/share/nginx/html`
+
+Nossa estrutura de diretórios ficará desta forma:
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-a.com.conf
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            index.html
+```
+
+Agora vamos repetir o processo para o servidor web da rede `B`, onde usaremos a configuração a baixo:
+
+```nginx
+server {
+    listen 80;
+    server_name www.empresa-b.com;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+Iremos colocar o conteúdo a cima no arquivo `empresa-b.com.conf` do servidor web da rede `B`
+
+Nossa estrutura de diretórios ficará desta forma:
+
+```bash
+infra/
+    docker-compose.yaml
+    firewall/
+        dockerfile
+    net-a/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-a.com.conf
+            index.html
+    net-b/
+        dns/
+            dockerfile
+        host/
+            dockerfile
+        web/
+            dockerfile
+            empresa-b.com.conf
+            index.html
+```
+
+Para encerrar as configurações do servidor web (mais ainda não a questão) iremos ajustar nossos arquivos `dockerfile` de `web`, tanto para a rede `A` quanto para a `B`
+
+Atualmente o `dockerfile` de ambos os servidores web está assim:
+
+```dockerfile
+FROM nginx:latest
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+Iremos modificalos para que o mesmo copie tanto nosso arquivo de configurações quanto nossa página html.
+
+`Servidor Web da Rede A`
+
+```dockerfile
+FROM nginx:latest
+
+COPY ./index.html /usr/share/nginx/html
+COPY ./empresa-a.com.conf /etc/nginx/conf.d/
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+`Servidor Web da Rede B`
+
+```dockerfile
+FROM nginx:latest
+
+COPY ./index.html /usr/share/nginx/html
+COPY ./empresa-b.com.conf /etc/nginx/conf.d/
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+Agora vamos fazer um pequeno teste (que vai dar errado) com os servidores web
